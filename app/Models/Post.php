@@ -11,6 +11,8 @@ class Post extends Model
     use HasFactory;
 
     protected $guarded = [];
+    // default for every post query to reduce database queries
+    protected $with = ['category', 'author'];
 
     public function category()
     {

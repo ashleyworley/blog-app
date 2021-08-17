@@ -45,15 +45,17 @@ Route::get('posts/{post:slug}', function(Post $post) {
 Route::get('categories/{category:slug}', function(Category $category) {
 
     return view('posts', [
-        'posts' => $category->posts
+        // deal with n+1 problem, load with category and author
+        'posts' => $category->posts->load(['category', 'author'])
     ]);
 
 });
 
-Route::get('authors/{author:id}', function(User $author) {
+Route::get('authors/{author:username}', function(User $author) {
 
     return view('posts', [
-        'posts' => $author->posts
+        // deal with n+1 problem, load with category and author
+        'posts' => $author->posts->load(['category', 'author'])
     ]);
 
 });
