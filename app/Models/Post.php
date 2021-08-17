@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Faker\Provider\Lorem;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model
 {
@@ -16,6 +16,12 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
 }
 
 
