@@ -1,3 +1,5 @@
+<x-layout>
+
 <!DOCTYPE html>
 
 <title>My Blog</title>
@@ -20,3 +22,4 @@
 
    <a href="/">Back to Homepage</a>
 </body>
+</x-layout>
