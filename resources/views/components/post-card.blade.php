@@ -17,7 +17,7 @@
                     <div class="mt-4">
                         <h1 class="text-3xl">
                             <a href="/posts/{{ $post->slug }}">
-                            {{ $post->category->title }}
+                            {{ $post->title }}
                             </a>
                         </h1>
 
