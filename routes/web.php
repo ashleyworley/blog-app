@@ -3,11 +3,12 @@
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
+use Illuminate\Queue\Listener;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 use Illuminate\Foundation\Auth\User as AuthUser;
-use Illuminate\Queue\Listener;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,46 +21,15 @@ use Illuminate\Queue\Listener;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', [PostController::class, 'index'])->name('home');
 
-    // \Illuminate\Support\Facades\DB::listen(function($query) {
-    //     logger($query->sql);
-    // });
+Route::get('posts/{post:slug}', [PostController::class, 'show']);
 
-   return view('posts', [
-       // deal with n+1 problem, load with category and author
-       'posts' => Post::latest()->with('category', 'author')->get(),
-       'categories' => Category::all()
-   ]);
-
-});
-
-Route::get('posts/{post:slug}', function(Post $post,) {
-
-    return view('post', [
-        'post' => $post,
-    ]);
-
-
-});
-
-Route::get('categories/{category:slug}', function(Category $category) {
-
-    return view('posts', [
-        // deal with n+1 problem, load with category and author
-        'posts' => $category->posts->load(['category', 'author']),
-        'categories' => Category::all()
-
-    ]);
-
-});
-
-Route::get('authors/{author:username}', function(User $author) {
+Route::get('authors/{author:username}', function (User $author) {
 
     return view('posts', [
         // deal with n+1 problem, load with category and author
         'posts' => $author->posts->load(['category', 'author']),
         'categories' => Category::all()
     ]);
-
 });
