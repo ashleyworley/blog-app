@@ -44,7 +44,8 @@ Route::get('categories/{category:slug}', function(Category $category) {
     return view('posts', [
         // deal with n+1 problem, load with category and author
         'posts' => $category->posts->load(['category', 'author']),
-        'categories' => Category::all()
+        'categories' => Category::all(),
+        'currentCategory' => $category
 
     ]);
 

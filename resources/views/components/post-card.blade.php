@@ -10,6 +10,7 @@
 
             <div class="flex flex-col justify-between mt-8">
                 <header>
+                    {{-- pull through category tag for posts --}}
                     <div class="space-x-2">
                         <x-category-button :category="$post->category"/>
                     </div>

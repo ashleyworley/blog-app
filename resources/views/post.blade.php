@@ -7,12 +7,14 @@
                     <img src="/images/illustration-1.png" alt="" class="rounded-xl">
 
                     <p class="block mt-4 text-xs text-gray-400">
+                        {{-- pull through time post published --}}
                         Published <time>{{ $post->created_at->diffForHumans() }}</time>
                     </p>
 
                     <div class="flex items-center mt-4 text-sm lg:justify-center">
                         <img src="/images/lary-avatar.svg" alt="Lary avatar">
                         <div class="ml-3 text-left">
+                            {{-- pull through post author --}}
                             <h5 class="font-bold">{{ $post->author->name }}</h5>
                         </div>
                     </div>
@@ -33,16 +35,17 @@
                             </svg>
                             Back to Posts
                         </a>
-
+                        {{-- pull through the categories component --}}
                         <div class="space-x-2">
-                            <x-category-button :category="$post->category"/>
+                            <x-category-button :category="$post->category" />
                         </div>
                     </div>
 
                     <h1 class="mb-10 text-3xl font-bold lg:text-4xl">
+                        {{-- pull through post title --}}
                         {{ $post->title }}
                     </h1>
-
+                    {{-- pull through post body --}}
                     <div class="space-y-4 leading-loose lg:text-lg">{{ $post->body }}</div>
                 </div>
             </article>
