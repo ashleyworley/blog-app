@@ -20,11 +20,15 @@
 
             {{-- passing object to attribute, by default don't display dropdown links --}}
             <div x-data="{show: false }" @click.away="show = false">
-                <button {{-- click event, change show to true when clicked to display categories --}} @click="show = ! show"
-                    class="flex w-full py-2 pl-3 text-sm font-semibold text-left pr-9 lg:w-32 lg:inline-flex">
+                {{-- click event, change show to true when clicked to display categories --}}
+                <button
+                    @click="show = ! show"
+                    class="flex w-full py-2 pl-3 text-sm font-semibold text-left pr-9 lg:w-32 lg:inline-flex"
 
+                    >
                     {{-- if we have current category, show, else default to Categories --}}
-                    {{ isset($currentCategory) ? ucwords($currentCategory->name) : 'Categories'}}
+                    {{ isset($currentCategory) ? $currentCategory->name : 'Categories'}}
+
 
                     <svg class="absolute transform -rotate-90 pointer-events-none" style="right: 12px;" width="22" P
                         height="22" viewBox="0 0 22 22">
