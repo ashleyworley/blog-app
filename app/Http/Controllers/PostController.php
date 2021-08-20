@@ -12,6 +12,9 @@ class PostController extends Controller
         return view('posts', [
             'posts' => Post::latest()->get(),
             'categories' => Category::all()
+
+
+
         ]);
     }
 

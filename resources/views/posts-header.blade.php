@@ -26,8 +26,11 @@
                     class="flex w-full py-2 pl-3 text-sm font-semibold text-left pr-9 lg:w-32 lg:inline-flex"
 
                     >
+
+                     {{ isset($currentCategory) ? ucwords($currentCategory->name) : 'Categories'}}
+
                     {{-- if we have current category, show, else default to Categories --}}
-                    {{ isset($currentCategory) ? $currentCategory->name : 'Categories'}}
+
 
 
                     <svg class="absolute transform -rotate-90 pointer-events-none" style="right: 12px;" width="22" P
@@ -44,9 +47,19 @@
 
                 {{-- dynamically load in and display categories --}}
                 <div x-show="show" class="absolute z-50 w-full py-2 mt-2 bg-gray-100 rounded-xl" style="display: none">
+
+                    <a href="/"
+                        class="block px-4 text-sm leading-6 text-left hover:bg-gray-300 focus:bg-gray-300 hover:text-white focus:text-white">All</a>
+
+
                     @foreach ($categories as $category)
                         <a href="/categories/{{ $category->slug }}"
-                            class="block px-4 text-sm leading-6 text-left hover:bg-gray-300 focus:bg-gray-300 hover:text-white focus:text-white">{{ ucwords($category->name) }}</a>
+                            class="
+                            block px-4 text-sm leading-6 text-left
+                            hover:bg-gray-300 focus:bg-gray-300 hover:text-white focus:text-white
+                            {{ isset($currentCategory) && $currentCategory->is($category) ? 'bg-blue-500 text-white' : '' }}
+                            "
+                        >{{ ucwords($category->name) }}</a>
                     @endforeach
 
                 </div>

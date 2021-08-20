@@ -30,20 +30,20 @@ Route::get('/', function () {
 
 });
 
-Route::get('posts/{post:slug}', function(Post $post,) {
+// Route::get('posts/{post:slug}', function(Post $post,) {
 
-    return view('post', [
-        'post' => $post,
-    ]);
+//     return view('post', [
+//         'post' => $post,
+//     ]);
 
 
-});
+// });
 
 Route::get('categories/{category:slug}', function(Category $category) {
 
     return view('posts', [
         // deal with n+1 problem, load with category and author
-        'posts' => $category->posts->load(['category', 'author']),
+        'posts' => $category->posts,
         'currentCategory' => $category,
         'categories' => Category::all()
 
