@@ -1,4 +1,5 @@
 
+{{-- down arrow for dropdown menu --}}
 @props(['name'])
 
 @if ($name === 'down-arrow')

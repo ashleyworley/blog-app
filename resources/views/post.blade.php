@@ -1,3 +1,4 @@
+{{-- layout of individual posts page --}}
 <x-layout>
     <section class="px-6 py-8">
         <main class="max-w-6xl mx-auto mt-10 space-y-6 lg:mt-20">

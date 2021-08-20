@@ -22,10 +22,6 @@ use Illuminate\Queue\Listener;
 
 Route::get('/', function () {
 
-    // \Illuminate\Support\Facades\DB::listen(function($query) {
-    //     logger($query->sql);
-    // });
-
    return view('posts', [
        // deal with n+1 problem, load with category and author
        'posts' => Post::latest()->with('category', 'author')->get(),
